@@ -222,7 +222,7 @@ section{padding:clamp(3rem,7vw,5.5rem) 0}
 .band .wrap{position:relative;z-index:1;padding-block:clamp(2.2rem,5vw,3.2rem)}
 .band h2{font-size:clamp(1.45rem,3vw,2rem);text-align:center;color:var(--band-ink)}
 .band .sub{text-align:center;color:var(--band-ink-2);margin-top:.5rem;font-size:.95rem}
-.stats{margin-top:2.2rem;display:grid;grid-template-columns:repeat(4,1fr);border-left:1px solid rgba(255,255,255,.22)}
+.stats{margin-top:2.2rem;display:grid;grid-template-columns:repeat(3,1fr);border-left:1px solid rgba(255,255,255,.22)}
 .stat{padding:.4rem 1rem;text-align:center;border-right:1px solid rgba(255,255,255,.22)}
 .stat b{
   display:block;font-family:"Newsreader",serif;font-weight:400;
@@ -463,11 +463,11 @@ footer{background:var(--bg-alt);border-top:1px solid var(--line-soft);padding:cl
   <!-- CERTIFICATIONS STRIP -->
   <div class="certstrip">
     <div class="wrap">
-      <p class="eyebrow" data-es="Certificaciones" data-en="Certifications">Certificaciones</p>
+      <p class="eyebrow" data-es="Certificaciones principales" data-en="Main certifications">Certificaciones principales</p>
+      <span class="cert"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.5l2.9 2.1 3.5-.4 1.1 3.4 3 1.9-1.4 3.3 1.4 3.3-3 1.9-1.1 3.4-3.5-.4L12 22.5 9.1 20.4l-3.5.4-1.1-3.4-3-1.9L2.9 12 1.5 8.7l3-1.9 1.1-3.4 3.5.4z"/></svg>CompTIA</span>
+      <span class="cert"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.5l2.9 2.1 3.5-.4 1.1 3.4 3 1.9-1.4 3.3 1.4 3.3-3 1.9-1.1 3.4-3.5-.4L12 22.5 9.1 20.4l-3.5.4-1.1-3.4-3-1.9L2.9 12 1.5 8.7l3-1.9 1.1-3.4 3.5.4z"/></svg>ITIL</span>
       <span class="cert"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.5l2.9 2.1 3.5-.4 1.1 3.4 3 1.9-1.4 3.3 1.4 3.3-3 1.9-1.1 3.4-3.5-.4L12 22.5 9.1 20.4l-3.5.4-1.1-3.4-3-1.9L2.9 12 1.5 8.7l3-1.9 1.1-3.4 3.5.4z"/></svg>Microsoft 365 Endpoint Administrator</span>
-      <span class="cert"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.5l2.9 2.1 3.5-.4 1.1 3.4 3 1.9-1.4 3.3 1.4 3.3-3 1.9-1.1 3.4-3.5-.4L12 22.5 9.1 20.4l-3.5.4-1.1-3.4-3-1.9L2.9 12 1.5 8.7l3-1.9 1.1-3.4 3.5.4z"/></svg><span data-es="Armado y reparación de PCs" data-en="PC assembly &amp; repair">Armado y reparación de PCs</span></span>
-      <span class="cert"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.5l2.9 2.1 3.5-.4 1.1 3.4 3 1.9-1.4 3.3 1.4 3.3-3 1.9-1.1 3.4-3.5-.4L12 22.5 9.1 20.4l-3.5.4-1.1-3.4-3-1.9L2.9 12 1.5 8.7l3-1.9 1.1-3.4 3.5.4z"/></svg><span data-es="Fundamentos de liderazgo" data-en="Leadership fundamentals">Fundamentos de liderazgo</span></span>
-      <span class="cert"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.5l2.9 2.1 3.5-.4 1.1 3.4 3 1.9-1.4 3.3 1.4 3.3-3 1.9-1.1 3.4-3.5-.4L12 22.5 9.1 20.4l-3.5.4-1.1-3.4-3-1.9L2.9 12 1.5 8.7l3-1.9 1.1-3.4 3.5.4z"/></svg><span data-es="Introducción a la programación" data-en="Intro to programming">Introducción a la programación</span></span>
+      <span class="cert"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.5l2.9 2.1 3.5-.4 1.1 3.4 3 1.9-1.4 3.3 1.4 3.3-3 1.9-1.1 3.4-3.5-.4L12 22.5 9.1 20.4l-3.5.4-1.1-3.4-3-1.9L2.9 12 1.5 8.7l3-1.9 1.1-3.4 3.5.4z"/></svg>Certified Nexthink Associate</span>
     </div>
   </div>
 
@@ -478,9 +478,8 @@ footer{background:var(--bg-alt);border-top:1px solid var(--line-soft);padding:cl
       <p class="sub" data-es="Accenture Argentina, equipo de soporte local." data-en="Accenture Argentina, local support team.">Accenture Argentina, equipo de soporte local.</p>
       <div class="stats">
         <div class="stat"><b>13.300+</b><span data-es="Colaboradores" data-en="Employees">Colaboradores</span></div>
-        <div class="stat"><b>100+</b><span data-es="Directivos" data-en="Executives">Directivos</span></div>
+        <div class="stat"><b>70+</b><span data-es="Directivos" data-en="Executives">Directivos</span></div>
         <div class="stat"><b>4</b><span data-es="Países" data-en="Countries">Países</span></div>
-        <div class="stat"><b>Top 5</b><span data-es="Del equipo" data-en="In the team">Del equipo</span></div>
       </div>
     </div>
   </div>
@@ -508,7 +507,7 @@ footer{background:var(--bg-alt);border-top:1px solid var(--line-soft);padding:cl
                   <span class="now-tag" data-es="Ascenso" data-en="Promotion">Ascenso</span>
                 </div>
                 <ul>
-                  <li data-es="Doy soporte prioritario a más de 100 directivos: software, cloud, redes, hardware y mobile." data-en="I give priority support to 100+ executives: software, cloud, networking, hardware and mobile.">Doy soporte prioritario a más de 100 directivos: software, cloud, redes, hardware y mobile.</li>
+                  <li data-es="Doy soporte prioritario a más de 70 directivos: software, cloud, redes, hardware y mobile." data-en="I give priority support to 70+ executives: software, cloud, networking, hardware and mobile.">Doy soporte prioritario a más de 70 directivos: software, cloud, redes, hardware y mobile.</li>
                   <li data-es="Me ocupo todos los meses de la imagen base de Windows que se usa para inducción, reimaging y rollout en Argentina, Chile, Costa Rica y Colombia." data-en="Every month I handle the Windows base image used for onboarding, reimaging and rollout in Argentina, Chile, Costa Rica and Colombia.">Me ocupo todos los meses de la imagen base de Windows que se usa para inducción, reimaging y rollout en Argentina, Chile, Costa Rica y Colombia.</li>
                   <li data-es="Armé automatizaciones en Power Platform para flujos internos del equipo, por iniciativa propia y fuera de lo que pide el rol." data-en="I built Power Platform automations for the team's internal workflows, on my own initiative and outside what the role asks for.">Armé automatizaciones en Power Platform para flujos internos del equipo, por iniciativa propia y fuera de lo que pide el rol.</li>
                   <li data-es="Trabajo con prácticas ITIL para ir mejorando los procesos operativos." data-en="I work with ITIL practices to keep improving operational processes.">Trabajo con prácticas ITIL para ir mejorando los procesos operativos.</li>
@@ -581,8 +580,8 @@ footer{background:var(--bg-alt);border-top:1px solid var(--line-soft);padding:cl
         </article>
         <article class="card">
           <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9"/><path d="M12 7v5l3 2"/><path d="M3 12l-1.5-2.5M3 12l2.5-1.5"/></svg></div>
-          <h3 data-es="Procesos" data-en="Processes">Procesos</h3>
-          <p data-es="ITIL aplicado al día a día y coordinación en inglés con equipos de Chile, Costa Rica y Colombia." data-en="ITIL applied day to day, and coordination in English with teams in Chile, Costa Rica and Colombia.">ITIL aplicado al día a día y coordinación en inglés con equipos de Chile, Costa Rica y Colombia.</p>
+          <h3 data-es="Colaboración" data-en="Collaboration">Colaboración</h3>
+          <p data-es="ITIL aplicado al día a día y coordinación en inglés con equipos de Accenture Global." data-en="ITIL applied day to day, and coordination in English with teams across Accenture Global.">ITIL aplicado al día a día y coordinación en inglés con equipos de Accenture Global.</p>
           <div class="tags"><span class="tag">ITIL</span><span class="tag">Stakeholders</span><span class="tag">Documentación</span></div>
         </article>
       </div>
@@ -625,7 +624,7 @@ footer{background:var(--bg-alt);border-top:1px solid var(--line-soft);padding:cl
             <div class="meter"><i style="width:78%"></i></div>
           </div>
         </div>
-        <p style="margin-top:1.4rem;font-size:.88rem;color:var(--ink-2)" data-es="Uso el inglés todos los días con usuarios y equipos de Chile, Costa Rica y Colombia." data-en="I use English every day with users and teams in Chile, Costa Rica and Colombia.">Uso el inglés todos los días con usuarios y equipos de Chile, Costa Rica y Colombia.</p>
+        <p style="margin-top:1.4rem;font-size:.88rem;color:var(--ink-2)" data-es="Uso el inglés frecuentemente con usuarios y equipos de Accenture Global." data-en="I use English frequently with users and teams across Accenture Global.">Uso el inglés frecuentemente con usuarios y equipos de Accenture Global.</p>
       </aside>
     </div>
   </section>
