@@ -217,6 +217,7 @@ a{color:inherit}
 .cert-dialog::backdrop{background:rgba(23,21,26,.55);backdrop-filter:blur(2px)}
 .cert-dialog[open]{display:flex;flex-direction:column}
 .cert-dialog-img{width:100%;display:block;border-radius:18px 18px 0 0;background:var(--bg-alt)}
+.cert-dialog-frame{width:100%;height:min(70vh,640px);display:block;border:0;border-radius:18px 18px 0 0;background:var(--bg-alt)}
 .cert-dialog-foot{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.1rem 1.3rem}
 .cert-dialog-name{font-family:"Newsreader",serif;font-size:1.05rem;line-height:1.3}
 .cert-dialog-close{
@@ -613,7 +614,7 @@ footer{background:var(--bg-alt);border-top:1px solid var(--line-soft);padding:cl
           <button type="button" class="cert" data-name="CompTIA" data-file="assets/certs/comptia.jpg"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.5l2.9 2.1 3.5-.4 1.1 3.4 3 1.9-1.4 3.3 1.4 3.3-3 1.9-1.1 3.4-3.5-.4L12 22.5 9.1 20.4l-3.5.4-1.1-3.4-3-1.9L2.9 12 1.5 8.7l3-1.9 1.1-3.4 3.5.4z"/></svg>CompTIA</button>
           <button type="button" class="cert" data-name="ITIL" data-file="assets/certs/itil.jpg"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.5l2.9 2.1 3.5-.4 1.1 3.4 3 1.9-1.4 3.3 1.4 3.3-3 1.9-1.1 3.4-3.5-.4L12 22.5 9.1 20.4l-3.5.4-1.1-3.4-3-1.9L2.9 12 1.5 8.7l3-1.9 1.1-3.4 3.5.4z"/></svg>ITIL</button>
           <button type="button" class="cert" data-name="Microsoft 365 Endpoint Administrator" data-file="assets/certs/microsoft-365-endpoint-administrator.jpg"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.5l2.9 2.1 3.5-.4 1.1 3.4 3 1.9-1.4 3.3 1.4 3.3-3 1.9-1.1 3.4-3.5-.4L12 22.5 9.1 20.4l-3.5.4-1.1-3.4-3-1.9L2.9 12 1.5 8.7l3-1.9 1.1-3.4 3.5.4z"/></svg>Microsoft 365 Endpoint Administrator</button>
-          <button type="button" class="cert" data-name="Certified Nexthink Associate" data-file="assets/certs/certified-nexthink-associate.jpg"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.5l2.9 2.1 3.5-.4 1.1 3.4 3 1.9-1.4 3.3 1.4 3.3-3 1.9-1.1 3.4-3.5-.4L12 22.5 9.1 20.4l-3.5.4-1.1-3.4-3-1.9L2.9 12 1.5 8.7l3-1.9 1.1-3.4 3.5.4z"/></svg>Certified Nexthink Associate</button>
+          <button type="button" class="cert" data-name="Certified Nexthink Associate" data-file="assets/certs/certified-nexthink-associate.pdf"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.5l2.9 2.1 3.5-.4 1.1 3.4 3 1.9-1.4 3.3 1.4 3.3-3 1.9-1.1 3.4-3.5-.4L12 22.5 9.1 20.4l-3.5.4-1.1-3.4-3-1.9L2.9 12 1.5 8.7l3-1.9 1.1-3.4 3.5.4z"/></svg>Certified Nexthink Associate</button>
         </div>
 
         <p class="eyebrow" style="margin:1.8rem 0 .9rem" data-es="Estudios" data-en="Studies">Estudios</p>
@@ -655,6 +656,7 @@ footer{background:var(--bg-alt);border-top:1px solid var(--line-soft);padding:cl
 <dialog id="cert-dialog" class="cert-dialog">
   <button type="button" class="cert-dialog-close" id="cert-dialog-close" aria-label="Cerrar">&times;</button>
   <img id="cert-dialog-img" class="cert-dialog-img" alt="">
+  <iframe id="cert-dialog-frame" class="cert-dialog-frame" title="" hidden></iframe>
   <div class="cert-dialog-foot">
     <p id="cert-dialog-name" class="cert-dialog-name"></p>
     <a id="cert-dialog-download" class="btn ghost cert-dialog-dl" download>
@@ -750,6 +752,7 @@ footer{background:var(--bg-alt);border-top:1px solid var(--line-soft);padding:cl
   var certDialog = document.getElementById('cert-dialog');
   if (certDialog) {
     var certImg = document.getElementById('cert-dialog-img');
+    var certFrame = document.getElementById('cert-dialog-frame');
     var certNameEl = document.getElementById('cert-dialog-name');
     var certDownload = document.getElementById('cert-dialog-download');
     var certCloseBtn = document.getElementById('cert-dialog-close');
@@ -759,9 +762,21 @@ footer{background:var(--bg-alt);border-top:1px solid var(--line-soft);padding:cl
     function openCert(btn){
       var file = btn.getAttribute('data-file');
       var name = btn.getAttribute('data-name');
+      var isPdf = /\.pdf$/i.test(file);
       function apply(){
-        certImg.src = file;
-        certImg.alt = name;
+        if (isPdf){
+          certFrame.src = file;
+          certFrame.title = name;
+          certFrame.hidden = false;
+          certImg.hidden = true;
+          certImg.removeAttribute('src');
+        } else {
+          certImg.src = file;
+          certImg.alt = name;
+          certImg.hidden = false;
+          certFrame.hidden = true;
+          certFrame.removeAttribute('src');
+        }
         certNameEl.textContent = name;
         certDownload.href = file;
         certDownload.setAttribute('download', name.toLowerCase().replace(/[^a-z0-9]+/g,'-'));
