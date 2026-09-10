@@ -200,11 +200,32 @@ a{color:inherit}
 .badge .dot{width:8px;height:8px;border-radius:50%;background:#4FBF83;box-shadow:0 0 0 4px rgba(79,191,131,.18)}
 .badge span{font-size:.74rem;color:var(--ink-2);line-height:1.3}
 
-.certstrip{border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);padding:1.5rem 0;background:var(--bg-alt)}
-.certstrip .wrap{display:flex;flex-wrap:wrap;gap:.6rem 1.6rem;align-items:center}
-.certstrip .eyebrow{flex:0 0 auto;margin-right:.4rem}
-.cert{font-size:.82rem;color:var(--ink-2);display:flex;align-items:center;gap:.45rem}
+.cert-group{display:flex;flex-wrap:wrap;gap:.6rem 1.4rem}
+.cert{
+  font:inherit;font-size:.82rem;color:var(--ink-2);display:flex;align-items:center;gap:.45rem;
+  border:0;background:none;padding:0;margin:0;cursor:pointer;text-align:left;
+  transition:color .2s;
+}
+.cert:hover{color:var(--accent)}
 .cert svg{width:14px;height:14px;color:var(--accent);flex:0 0 auto}
+
+/* ============ CERT PREVIEW DIALOG ============ */
+.cert-dialog{
+  position:relative;border:0;border-radius:18px;padding:0;background:var(--surface);color:var(--ink);
+  box-shadow:var(--shadow-3d);max-width:min(520px,92vw);width:100%;margin:auto;
+}
+.cert-dialog::backdrop{background:rgba(23,21,26,.55);backdrop-filter:blur(2px)}
+.cert-dialog[open]{display:flex;flex-direction:column}
+.cert-dialog-img{width:100%;display:block;border-radius:18px 18px 0 0;background:var(--bg-alt)}
+.cert-dialog-foot{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.1rem 1.3rem}
+.cert-dialog-name{font-family:"Newsreader",serif;font-size:1.05rem;line-height:1.3}
+.cert-dialog-close{
+  position:absolute;top:.7rem;right:.7rem;width:32px;height:32px;border-radius:50%;z-index:1;
+  border:1px solid var(--line);background:var(--surface);color:var(--ink-2);
+  font-size:1.2rem;line-height:1;cursor:pointer;display:grid;place-items:center;
+}
+.cert-dialog-close:hover{color:var(--accent);border-color:var(--accent)}
+.cert-dialog-dl{padding:.55rem 1rem;font-size:.78rem;white-space:nowrap}
 
 /* ============ SECTIONS ============ */
 section{padding:clamp(3rem,7vw,5.5rem) 0}
@@ -413,8 +434,8 @@ footer{background:var(--bg-alt);border-top:1px solid var(--line-soft);padding:cl
       Juliana G. Traverso
     </a>
     <nav class="topnav">
-      <a href="#experiencia" data-es="Experiencia" data-en="Experience">Experiencia</a>
       <a href="#skills" data-es="Skills" data-en="Skills">Skills</a>
+      <a href="#experiencia" data-es="Experiencia" data-en="Experience">Experiencia</a>
       <a href="#formacion" data-es="Formación" data-en="Education">Formación</a>
       <a href="#contacto" data-es="Contacto" data-en="Contact">Contacto</a>
     </nav>
@@ -445,8 +466,8 @@ footer{background:var(--bg-alt);border-top:1px solid var(--line-soft);padding:cl
           <span class="typewriter" aria-label="IT Analyst"></span>
           <span data-es="en Accenture" data-en="at Accenture">en Accenture</span>
         </p>
+        <p class="lede" data-es="Casi tres años en soporte IT en Accenture Argentina me dieron una base sólida: incidentes, la imagen base de Windows para cuatro países y automatizaciones en Power Platform. Ahora busco el siguiente paso: sumarme a un equipo de gestión de proyectos." data-en="Almost three years in IT support at Accenture Argentina gave me a solid base: incidents, the Windows base image for four countries, and automations in Power Platform. Now I'm looking for the next step: joining a project management team.">Casi tres años en soporte IT en Accenture Argentina me dieron una base sólida: incidentes, la imagen base de Windows para cuatro países y automatizaciones en Power Platform. Ahora busco el siguiente paso: sumarme a un equipo de gestión de proyectos.</p>
         <div class="hero-cta">
-          <p class="lede" data-es="Hace más tres años que trabajo en soporte IT en Accenture Argentina. Resolviendo incidentes y reparando notebooks, hoy, además me ocupo de la imagen base de Windows para cuatro países y armo automatizaciones en Power Platform. Ahora quiero moverme hacia gestión de proyectos." data-en="I've been working in IT support at Accenture Argentina for over three years. Alongside resolving incidents and repairing laptops, I now handle the Windows base image for four countries and build automations in Power Platform. Now, I want to move into project management.">Hace casi tres años que trabajo en soporte IT en Accenture Argentina. Empecé resolviendo incidentes y reparando notebooks, y hoy me ocupo de la imagen base de Windows para cuatro países y armo automatizaciones en Power Platform. Ahora quiero moverme hacia gestión de proyectos.</p>
           <a class="btn" href="https://www.linkedin.com/in/juliana-gomez-traverso-85383a218" target="_blank" rel="noopener" data-es="Ver LinkedIn" data-en="View LinkedIn">Ver LinkedIn</a>
           <a class="btn ghost" href="mailto:juliana.gomez.traverso@gmail.com" data-es="Escribime" data-en="Get in touch">Escribime</a>
         </div>
@@ -461,22 +482,11 @@ footer{background:var(--bg-alt);border-top:1px solid var(--line-soft);padding:cl
     </div>
   </section>
 
-  <!-- CERTIFICATIONS STRIP -->
-  <div class="certstrip">
-    <div class="wrap">
-      <p class="eyebrow" data-es="Certificaciones principales" data-en="Main certifications">Certificaciones principales</p>
-      <span class="cert"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.5l2.9 2.1 3.5-.4 1.1 3.4 3 1.9-1.4 3.3 1.4 3.3-3 1.9-1.1 3.4-3.5-.4L12 22.5 9.1 20.4l-3.5.4-1.1-3.4-3-1.9L2.9 12 1.5 8.7l3-1.9 1.1-3.4 3.5.4z"/></svg>CompTIA</span>
-      <span class="cert"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.5l2.9 2.1 3.5-.4 1.1 3.4 3 1.9-1.4 3.3 1.4 3.3-3 1.9-1.1 3.4-3.5-.4L12 22.5 9.1 20.4l-3.5.4-1.1-3.4-3-1.9L2.9 12 1.5 8.7l3-1.9 1.1-3.4 3.5.4z"/></svg>ITIL</span>
-      <span class="cert"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.5l2.9 2.1 3.5-.4 1.1 3.4 3 1.9-1.4 3.3 1.4 3.3-3 1.9-1.1 3.4-3.5-.4L12 22.5 9.1 20.4l-3.5.4-1.1-3.4-3-1.9L2.9 12 1.5 8.7l3-1.9 1.1-3.4 3.5.4z"/></svg>Microsoft 365 Endpoint Administrator</span>
-      <span class="cert"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.5l2.9 2.1 3.5-.4 1.1 3.4 3 1.9-1.4 3.3 1.4 3.3-3 1.9-1.1 3.4-3.5-.4L12 22.5 9.1 20.4l-3.5.4-1.1-3.4-3-1.9L2.9 12 1.5 8.7l3-1.9 1.1-3.4 3.5.4z"/></svg>Certified Nexthink Associate</span>
-    </div>
-  </div>
-
   <!-- STATS BAND -->
   <div class="band">
     <div class="wrap">
-      <h2 data-es="El alcance del rol, en números" data-en="The scope of the role, in numbers">El alcance del rol, en números</h2>
-      <p class="sub" data-es="Accenture Argentina, equipo de soporte local." data-en="Accenture Argentina, local support team.">Accenture Argentina, equipo de soporte local.</p>
+      <h2 data-es="El alcance del soporte, en números" data-en="The scope of the support, in numbers">El alcance del soporte, en números</h2>
+      <p class="sub" data-es="Colaboradores, directivos y países bajo mi soporte en Accenture Argentina." data-en="Employees, executives and countries under my support at Accenture Argentina.">Colaboradores, directivos y países bajo mi soporte en Accenture Argentina.</p>
       <div class="stats">
         <div class="stat"><b>13.300+</b><span data-es="Colaboradores" data-en="Employees">Colaboradores</span></div>
         <div class="stat"><b>70+</b><span data-es="Directivos" data-en="Executives">Directivos</span></div>
@@ -484,80 +494,6 @@ footer{background:var(--bg-alt);border-top:1px solid var(--line-soft);padding:cl
       </div>
     </div>
   </div>
-
-  <!-- EXPERIENCE -->
-  <section id="experiencia" class="reveal">
-    <div class="wrap">
-      <div class="sec-head">
-        <p class="eyebrow">2022 — 2026</p>
-        <h2 data-es="Dónde trabajé" data-en="Where I've worked">Dónde trabajé</h2>
-      </div>
-      <div class="timeline">
-
-        <article class="job">
-          <div class="when"><b data-es="ago 2023 — hoy" data-en="Aug 2023 — present">ago 2023 — hoy</b><span data-es="3 años 2 meses" data-en="3 yrs 2 mos">3 años 2 meses</span></div>
-          <div>
-            <h3>Accenture</h3>
-            <p class="org" data-es="Soporte IT · Buenos Aires" data-en="IT support · Buenos Aires">Soporte IT · Buenos Aires</p>
-
-            <div class="steps">
-              <div class="step now">
-                <div class="step-head">
-                  <h4>SW/App/Cloud Tech Support Analyst</h4>
-                  <span class="step-when" data-es="dic 2025 — hoy" data-en="Dec 2025 — present">dic 2025 — hoy</span>
-                  <span class="now-tag" data-es="Ascenso" data-en="Promotion">Ascenso</span>
-                </div>
-                <ul>
-                  <li data-es="Doy soporte prioritario a más de 70 directivos: software, cloud, redes, hardware y mobile." data-en="I give priority support to 70+ executives: software, cloud, networking, hardware and mobile.">Doy soporte prioritario a más de 70 directivos: software, cloud, redes, hardware y mobile.</li>
-                  <li data-es="Me ocupo todos los meses de la imagen base de Windows que se usa para inducción, reimaging y rollout en Argentina, Chile, Costa Rica y Colombia." data-en="Every month I handle the Windows base image used for onboarding, reimaging and rollout in Argentina, Chile, Costa Rica and Colombia.">Me ocupo todos los meses de la imagen base de Windows que se usa para inducción, reimaging y rollout en Argentina, Chile, Costa Rica y Colombia.</li>
-                  <li data-es="Armé automatizaciones en Power Platform para flujos internos del equipo, por iniciativa propia y fuera de lo que pide el rol." data-en="I built Power Platform automations for the team's internal workflows, on my own initiative and outside what the role asks for.">Armé automatizaciones en Power Platform para flujos internos del equipo, por iniciativa propia y fuera de lo que pide el rol.</li>
-                  <li data-es="Trabajo con prácticas ITIL para ir mejorando los procesos operativos." data-en="I work with ITIL practices to keep improving operational processes.">Trabajo con prácticas ITIL para ir mejorando los procesos operativos.</li>
-                </ul>
-              </div>
-
-              <div class="step">
-                <div class="step-head">
-                  <h4>SW/App/Cloud Tech Support Associate</h4>
-                  <span class="step-when" data-es="ago 2023 — dic 2025" data-en="Aug 2023 — Dec 2025">ago 2023 — dic 2025</span>
-                </div>
-                <ul>
-                  <li data-es="Soporte local de nivel 2 para más de 13.300 colaboradores en Argentina: incidentes de software y reparación de notebooks." data-en="Level 2 local support for 13,300+ employees in Argentina: software incidents and laptop repair.">Soporte local de nivel 2 para más de 13.300 colaboradores en Argentina: incidentes de software y reparación de notebooks.</li>
-                  <li data-es="Estuve entre los 5 primeros del equipo en incidentes resueltos durante todo el tiempo que ocupé el puesto." data-en="I stayed in the team's top 5 for incidents resolved the whole time I held the role.">Estuve entre los 5 primeros del equipo en incidentes resueltos durante todo el tiempo que ocupé el puesto.</li>
-                  <li data-es="Resolví problemas en aplicaciones críticas del negocio y hablé en inglés todos los días con usuarios y equipos de afuera." data-en="I fixed issues in business-critical applications and spoke English daily with users and teams abroad.">Resolví problemas en aplicaciones críticas del negocio y hablé en inglés todos los días con usuarios y equipos de afuera.</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <article class="job">
-          <div class="when"><b data-es="abr — ago 2023" data-en="Apr — Aug 2023">abr — ago 2023</b><span data-es="5 meses" data-en="5 months">5 meses</span></div>
-          <div>
-            <h3 data-es="Técnica audiovisual" data-en="Audiovisual technician">Técnica audiovisual</h3>
-            <p class="org">Palacio Duhau · Park Hyatt Buenos Aires</p>
-            <ul>
-              <li data-es="Armaba y operaba el equipamiento de AV, proyección, iluminación y conferencias de los eventos del hotel." data-en="I set up and ran the AV, projection, lighting and conferencing gear for the hotel's events.">Armaba y operaba el equipamiento de AV, proyección, iluminación y conferencias de los eventos del hotel.</li>
-              <li data-es="Llevaba hasta 5 eventos en paralelo, desde reuniones corporativas hasta casamientos." data-en="I ran up to 5 events at once, from corporate meetings to weddings.">Llevaba hasta 5 eventos en paralelo, desde reuniones corporativas hasta casamientos.</li>
-              <li data-es="Era el único contacto técnico del turno, así que coordinaba sola con clientes, organizadores y los equipos internos." data-en="I was the only technical contact on shift, so I coordinated on my own with clients, planners and internal teams.">Era el único contacto técnico del turno, así que coordinaba sola con clientes, organizadores y los equipos internos.</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="job">
-          <div class="when"><b data-es="jun — oct 2022" data-en="Jun — Oct 2022">jun — oct 2022</b><span data-es="5 meses" data-en="5 months">5 meses</span></div>
-          <div>
-            <h3 data-es="Promotora · Fidelización" data-en="Loyalty &amp; guest services">Promotora · Fidelización</h3>
-            <p class="org">Galerías Pacífico</p>
-            <ul>
-              <li data-es="Atendía a más de 100 clientes por día, en persona y también por mail, WhatsApp y teléfono." data-en="I served 100+ customers a day, in person and also by email, WhatsApp and phone.">Atendía a más de 100 clientes por día, en persona y también por mail, WhatsApp y teléfono.</li>
-              <li data-es="Manejaba los puntos y premios del programa de fidelización, y el stock del área." data-en="I managed the loyalty program's points and rewards, plus the area's stock.">Manejaba los puntos y premios del programa de fidelización, y el stock del área.</li>
-            </ul>
-          </div>
-        </article>
-
-      </div>
-    </div>
-  </section>
 
   <!-- SKILLS -->
   <section id="skills" class="tint reveal">
@@ -589,14 +525,98 @@ footer{background:var(--bg-alt);border-top:1px solid var(--line-soft);padding:cl
     </div>
   </section>
 
+  <!-- EXPERIENCE -->
+  <section id="experiencia" class="reveal">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">2022 — 2026</p>
+        <h2 data-es="Dónde trabajé" data-en="Where I've worked">Dónde trabajé</h2>
+      </div>
+      <div class="timeline">
+
+        <article class="job">
+          <div class="when"><b data-es="ago 2023 — hoy" data-en="Aug 2023 — present">ago 2023 — hoy</b><span data-es="3 años 2 meses" data-en="3 yrs 2 mos">3 años 2 meses</span></div>
+          <div>
+            <h3>Accenture</h3>
+            <p class="org" data-es="Soporte IT · Buenos Aires" data-en="IT support · Buenos Aires">Soporte IT · Buenos Aires</p>
+
+            <div class="steps">
+              <div class="step now">
+                <div class="step-head">
+                  <h4>SW/App/Cloud Tech Support Analyst</h4>
+                  <span class="step-when" data-es="dic 2025 — hoy" data-en="Dec 2025 — present">dic 2025 — hoy</span>
+                  <span class="now-tag" data-es="Ascenso" data-en="Promotion">Ascenso</span>
+                </div>
+                <ul>
+                  <li data-es="Soporte prioritario a más de 70 directivos: software, cloud, redes, hardware y mobile." data-en="Priority support for 70+ executives: software, cloud, networking, hardware and mobile.">Soporte prioritario a más de 70 directivos: software, cloud, redes, hardware y mobile.</li>
+                  <li data-es="Gestión mensual de la imagen base de Windows para inducción, reimaging y rollout en Argentina, Chile, Costa Rica y Colombia." data-en="Monthly management of the Windows base image for onboarding, reimaging and rollout in Argentina, Chile, Costa Rica and Colombia.">Gestión mensual de la imagen base de Windows para inducción, reimaging y rollout en Argentina, Chile, Costa Rica y Colombia.</li>
+                  <li data-es="Automatizaciones en Power Platform para flujos internos del equipo, por iniciativa propia y fuera de lo que pide el rol." data-en="Power Platform automations for the team's internal workflows, on personal initiative and outside what the role asks for.">Automatizaciones en Power Platform para flujos internos del equipo, por iniciativa propia y fuera de lo que pide el rol.</li>
+                  <li data-es="Prácticas ITIL para la mejora continua de los procesos operativos." data-en="ITIL practices for continuous improvement of operational processes.">Prácticas ITIL para la mejora continua de los procesos operativos.</li>
+                </ul>
+              </div>
+
+              <div class="step">
+                <div class="step-head">
+                  <h4>SW/App/Cloud Tech Support Associate</h4>
+                  <span class="step-when" data-es="ago 2023 — dic 2025" data-en="Aug 2023 — Dec 2025">ago 2023 — dic 2025</span>
+                </div>
+                <ul>
+                  <li data-es="Soporte local de nivel 2 para más de 13.300 colaboradores en Argentina: incidentes de software y reparación de notebooks." data-en="Level 2 local support for 13,300+ employees in Argentina: software incidents and laptop repair.">Soporte local de nivel 2 para más de 13.300 colaboradores en Argentina: incidentes de software y reparación de notebooks.</li>
+                  <li data-es="Entre los 5 primeros del equipo en incidentes resueltos durante todo el tiempo en el puesto." data-en="Among the team's top 5 for incidents resolved throughout the whole time in the role.">Entre los 5 primeros del equipo en incidentes resueltos durante todo el tiempo en el puesto.</li>
+                  <li data-es="Resolución de problemas en aplicaciones críticas del negocio y coordinación diaria en inglés con usuarios y equipos de afuera." data-en="Troubleshooting of business-critical applications and daily coordination in English with users and teams abroad.">Resolución de problemas en aplicaciones críticas del negocio y coordinación diaria en inglés con usuarios y equipos de afuera.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="job">
+          <div class="when"><b data-es="abr — ago 2023" data-en="Apr — Aug 2023">abr — ago 2023</b><span data-es="5 meses" data-en="5 months">5 meses</span></div>
+          <div>
+            <h3 data-es="Técnica audiovisual" data-en="Audiovisual technician">Técnica audiovisual</h3>
+            <p class="org">Palacio Duhau · Park Hyatt Buenos Aires</p>
+            <ul>
+              <li data-es="Armado y operación del equipamiento de AV, proyección, iluminación y conferencias de los eventos del hotel." data-en="Setup and operation of AV, projection, lighting and conferencing equipment for the hotel's events.">Armado y operación del equipamiento de AV, proyección, iluminación y conferencias de los eventos del hotel.</li>
+              <li data-es="Hasta 5 eventos en paralelo, desde reuniones corporativas hasta casamientos." data-en="Up to 5 events in parallel, from corporate meetings to weddings.">Hasta 5 eventos en paralelo, desde reuniones corporativas hasta casamientos.</li>
+              <li data-es="Único contacto técnico del turno, con coordinación directa con clientes, organizadores y equipos internos." data-en="Sole technical contact on shift, coordinating directly with clients, planners and internal teams.">Único contacto técnico del turno, con coordinación directa con clientes, organizadores y equipos internos.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="job">
+          <div class="when"><b data-es="jun — oct 2022" data-en="Jun — Oct 2022">jun — oct 2022</b><span data-es="5 meses" data-en="5 months">5 meses</span></div>
+          <div>
+            <h3 data-es="Promotora · Fidelización" data-en="Loyalty &amp; guest services">Promotora · Fidelización</h3>
+            <p class="org">Galerías Pacífico</p>
+            <ul>
+              <li data-es="Atención a más de 100 clientes por día, en persona y también por mail, WhatsApp y teléfono." data-en="Service for 100+ customers a day, in person and also by email, WhatsApp and phone.">Atención a más de 100 clientes por día, en persona y también por mail, WhatsApp y teléfono.</li>
+              <li data-es="Gestión de los puntos y premios del programa de fidelización, y del stock del área." data-en="Management of the loyalty program's points and rewards, and the area's stock.">Gestión de los puntos y premios del programa de fidelización, y del stock del área.</li>
+            </ul>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
   <!-- EDUCATION + LANGUAGES -->
   <section id="formacion" class="reveal">
     <div class="wrap duo">
       <div>
         <div class="sec-head" style="margin-bottom:1.8rem">
           <p class="eyebrow" data-es="Formación" data-en="Education">Formación</p>
-          <h2 data-es="Estudios" data-en="Studies">Estudios</h2>
+          <h2 data-es="Certificaciones y estudios" data-en="Certifications & studies">Certificaciones y estudios</h2>
         </div>
+
+        <p class="eyebrow" style="margin-bottom:.9rem" data-es="Certificaciones principales" data-en="Main certifications">Certificaciones principales</p>
+        <div class="cert-group">
+          <button type="button" class="cert" data-name="CompTIA" data-file="assets/certs/comptia.jpg"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.5l2.9 2.1 3.5-.4 1.1 3.4 3 1.9-1.4 3.3 1.4 3.3-3 1.9-1.1 3.4-3.5-.4L12 22.5 9.1 20.4l-3.5.4-1.1-3.4-3-1.9L2.9 12 1.5 8.7l3-1.9 1.1-3.4 3.5.4z"/></svg>CompTIA</button>
+          <button type="button" class="cert" data-name="ITIL" data-file="assets/certs/itil.jpg"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.5l2.9 2.1 3.5-.4 1.1 3.4 3 1.9-1.4 3.3 1.4 3.3-3 1.9-1.1 3.4-3.5-.4L12 22.5 9.1 20.4l-3.5.4-1.1-3.4-3-1.9L2.9 12 1.5 8.7l3-1.9 1.1-3.4 3.5.4z"/></svg>ITIL</button>
+          <button type="button" class="cert" data-name="Microsoft 365 Endpoint Administrator" data-file="assets/certs/microsoft-365-endpoint-administrator.jpg"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.5l2.9 2.1 3.5-.4 1.1 3.4 3 1.9-1.4 3.3 1.4 3.3-3 1.9-1.1 3.4-3.5-.4L12 22.5 9.1 20.4l-3.5.4-1.1-3.4-3-1.9L2.9 12 1.5 8.7l3-1.9 1.1-3.4 3.5.4z"/></svg>Microsoft 365 Endpoint Administrator</button>
+          <button type="button" class="cert" data-name="Certified Nexthink Associate" data-file="assets/certs/certified-nexthink-associate.jpg"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.5l2.9 2.1 3.5-.4 1.1 3.4 3 1.9-1.4 3.3 1.4 3.3-3 1.9-1.1 3.4-3.5-.4L12 22.5 9.1 20.4l-3.5.4-1.1-3.4-3-1.9L2.9 12 1.5 8.7l3-1.9 1.1-3.4 3.5.4z"/></svg>Certified Nexthink Associate</button>
+        </div>
+
+        <p class="eyebrow" style="margin:1.8rem 0 .9rem" data-es="Estudios" data-en="Studies">Estudios</p>
         <div class="entry">
           <h3 data-es="Licenciatura en Gestión de Tecnología de la Información" data-en="B.Sc. in Information Technology Management">Licenciatura en Gestión de Tecnología de la Información</h3>
           <p class="meta">UADE · Universidad Argentina de la Empresa</p>
@@ -631,6 +651,18 @@ footer{background:var(--bg-alt);border-top:1px solid var(--line-soft);padding:cl
   </section>
 
 </main>
+
+<dialog id="cert-dialog" class="cert-dialog">
+  <button type="button" class="cert-dialog-close" id="cert-dialog-close" aria-label="Cerrar">&times;</button>
+  <img id="cert-dialog-img" class="cert-dialog-img" alt="">
+  <div class="cert-dialog-foot">
+    <p id="cert-dialog-name" class="cert-dialog-name"></p>
+    <a id="cert-dialog-download" class="btn ghost cert-dialog-dl" download>
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
+      <span data-es="Descargar" data-en="Download">Descargar</span>
+    </a>
+  </div>
+</dialog>
 
 <footer id="contacto">
   <div class="wrap">
@@ -713,6 +745,68 @@ footer{background:var(--bg-alt);border-top:1px solid var(--line-soft);padding:cl
       }
     });
   });
+
+  /* ---- CERT PREVIEW ---- */
+  var certDialog = document.getElementById('cert-dialog');
+  if (certDialog) {
+    var certImg = document.getElementById('cert-dialog-img');
+    var certNameEl = document.getElementById('cert-dialog-name');
+    var certDownload = document.getElementById('cert-dialog-download');
+    var certCloseBtn = document.getElementById('cert-dialog-close');
+    var activeCertBtn = null;
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function openCert(btn){
+      var file = btn.getAttribute('data-file');
+      var name = btn.getAttribute('data-name');
+      function apply(){
+        certImg.src = file;
+        certImg.alt = name;
+        certNameEl.textContent = name;
+        certDownload.href = file;
+        certDownload.setAttribute('download', name.toLowerCase().replace(/[^a-z0-9]+/g,'-'));
+        certDialog.showModal();
+      }
+      if (!reduceMotion && document.startViewTransition){
+        activeCertBtn = btn;
+        btn.style.viewTransitionName = 'cert-preview';
+        var t = document.startViewTransition(function(){
+          apply();
+          btn.style.viewTransitionName = '';
+          certDialog.style.viewTransitionName = 'cert-preview';
+        });
+        t.finished.finally(function(){ certDialog.style.viewTransitionName = ''; });
+      } else {
+        apply();
+      }
+    }
+
+    function closeCert(){
+      if (!certDialog.open) return;
+      var btn = activeCertBtn;
+      activeCertBtn = null;
+      if (!reduceMotion && document.startViewTransition && btn){
+        certDialog.style.viewTransitionName = 'cert-preview';
+        var t = document.startViewTransition(function(){
+          certDialog.close();
+          btn.style.viewTransitionName = 'cert-preview';
+        });
+        t.finished.finally(function(){
+          certDialog.style.viewTransitionName = '';
+          btn.style.viewTransitionName = '';
+        });
+      } else {
+        certDialog.close();
+      }
+    }
+
+    document.querySelectorAll('.cert[data-file]').forEach(function(btn){
+      btn.addEventListener('click', function(){ openCert(btn); });
+    });
+    certCloseBtn.addEventListener('click', closeCert);
+    certDialog.addEventListener('click', function(e){ if (e.target === certDialog) closeCert(); });
+    certDialog.addEventListener('cancel', function(e){ e.preventDefault(); closeCert(); });
+  }
 })();
 </script>
 </body>
