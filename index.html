@@ -211,13 +211,14 @@ a{color:inherit}
 
 /* ============ CERT PREVIEW DIALOG ============ */
 .cert-dialog{
-  position:relative;border:0;border-radius:18px;padding:0;background:var(--surface);color:var(--ink);
-  box-shadow:var(--shadow-3d);max-width:min(520px,92vw);width:100%;margin:auto;
+  border:0;border-radius:18px;padding:0;background:var(--surface);color:var(--ink);
+  box-shadow:var(--shadow-3d);max-width:min(560px,92vw);width:100%;max-height:88vh;overflow:auto;
 }
 .cert-dialog::backdrop{background:rgba(23,21,26,.55);backdrop-filter:blur(2px)}
-.cert-dialog[open]{display:flex;flex-direction:column}
-.cert-dialog-img{width:100%;display:block;border-radius:18px 18px 0 0;background:var(--bg-alt)}
-.cert-dialog-frame{width:100%;height:min(70vh,640px);display:block;border:0;border-radius:18px 18px 0 0;background:var(--bg-alt)}
+.cert-dialog[open]{display:block}
+.cert-dialog-inner{position:relative;display:flex;flex-direction:column}
+.cert-dialog-img{width:100%;max-height:65vh;display:block;object-fit:contain;border-radius:18px 18px 0 0;background:var(--bg-alt)}
+.cert-dialog-frame{width:100%;height:min(65vh,600px);display:block;border:0;border-radius:18px 18px 0 0;background:var(--bg-alt)}
 .cert-dialog-foot{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.1rem 1.3rem}
 .cert-dialog-name{font-family:"Newsreader",serif;font-size:1.05rem;line-height:1.3}
 .cert-dialog-close{
@@ -467,7 +468,7 @@ footer{background:var(--bg-alt);border-top:1px solid var(--line-soft);padding:cl
           <span class="typewriter" aria-label="IT Analyst"></span>
           <span data-es="en Accenture" data-en="at Accenture">en Accenture</span>
         </p>
-        <p class="lede" data-es="Casi tres años en soporte IT en Accenture Argentina me dieron una base sólida: incidentes, la imagen base de Windows para cuatro países y automatizaciones en Power Platform. Ahora busco el siguiente paso: sumarme a un equipo de gestión de proyectos." data-en="Almost three years in IT support at Accenture Argentina gave me a solid base: incidents, the Windows base image for four countries, and automations in Power Platform. Now I'm looking for the next step: joining a project management team.">Casi tres años en soporte IT en Accenture Argentina me dieron una base sólida: incidentes, la imagen base de Windows para cuatro países y automatizaciones en Power Platform. Ahora busco el siguiente paso: sumarme a un equipo de gestión de proyectos.</p>
+        <p class="lede" data-es="Más de tres años en soporte IT en Accenture Argentina me dieron una base sólida: incidentes, la imagen base de Windows para cuatro países y automatizaciones en Power Platform. Ahora busco el siguiente paso: sumarme a un equipo de gestión de proyectos." data-en="More than three years in IT support at Accenture Argentina gave me a solid base: incidents, the Windows base image for four countries, and automations in Power Platform. Now I'm looking for the next step: joining a project management team.">Más de tres años en soporte IT en Accenture Argentina me dieron una base sólida: incidentes, la imagen base de Windows para cuatro países y automatizaciones en Power Platform. Ahora busco el siguiente paso: sumarme a un equipo de gestión de proyectos.</p>
         <div class="hero-cta">
           <a class="btn" href="https://www.linkedin.com/in/juliana-gomez-traverso-85383a218" target="_blank" rel="noopener" data-es="Ver LinkedIn" data-en="View LinkedIn">Ver LinkedIn</a>
           <a class="btn ghost" href="mailto:juliana.gomez.traverso@gmail.com" data-es="Escribime" data-en="Get in touch">Escribime</a>
@@ -611,8 +612,8 @@ footer{background:var(--bg-alt);border-top:1px solid var(--line-soft);padding:cl
 
         <p class="eyebrow" style="margin-bottom:.9rem" data-es="Certificaciones principales" data-en="Main certifications">Certificaciones principales</p>
         <div class="cert-group">
-          <button type="button" class="cert" data-name="CompTIA" data-file="assets/certs/comptia.jpg"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.5l2.9 2.1 3.5-.4 1.1 3.4 3 1.9-1.4 3.3 1.4 3.3-3 1.9-1.1 3.4-3.5-.4L12 22.5 9.1 20.4l-3.5.4-1.1-3.4-3-1.9L2.9 12 1.5 8.7l3-1.9 1.1-3.4 3.5.4z"/></svg>CompTIA</button>
-          <button type="button" class="cert" data-name="ITIL" data-file="assets/certs/itil.jpg"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.5l2.9 2.1 3.5-.4 1.1 3.4 3 1.9-1.4 3.3 1.4 3.3-3 1.9-1.1 3.4-3.5-.4L12 22.5 9.1 20.4l-3.5.4-1.1-3.4-3-1.9L2.9 12 1.5 8.7l3-1.9 1.1-3.4 3.5.4z"/></svg>ITIL</button>
+          <button type="button" class="cert" data-name="CompTIA" data-file="assets/certs/comptia.png"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.5l2.9 2.1 3.5-.4 1.1 3.4 3 1.9-1.4 3.3 1.4 3.3-3 1.9-1.1 3.4-3.5-.4L12 22.5 9.1 20.4l-3.5.4-1.1-3.4-3-1.9L2.9 12 1.5 8.7l3-1.9 1.1-3.4 3.5.4z"/></svg>CompTIA</button>
+          <button type="button" class="cert" data-name="ITIL" data-file="assets/certs/itil.png"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.5l2.9 2.1 3.5-.4 1.1 3.4 3 1.9-1.4 3.3 1.4 3.3-3 1.9-1.1 3.4-3.5-.4L12 22.5 9.1 20.4l-3.5.4-1.1-3.4-3-1.9L2.9 12 1.5 8.7l3-1.9 1.1-3.4 3.5.4z"/></svg>ITIL</button>
           <button type="button" class="cert" data-name="Microsoft 365 Endpoint Administrator" data-file="assets/certs/microsoft-365-endpoint-administrator.jpg"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.5l2.9 2.1 3.5-.4 1.1 3.4 3 1.9-1.4 3.3 1.4 3.3-3 1.9-1.1 3.4-3.5-.4L12 22.5 9.1 20.4l-3.5.4-1.1-3.4-3-1.9L2.9 12 1.5 8.7l3-1.9 1.1-3.4 3.5.4z"/></svg>Microsoft 365 Endpoint Administrator</button>
           <button type="button" class="cert" data-name="Certified Nexthink Associate" data-file="assets/certs/certified-nexthink-associate.pdf"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.5l2.9 2.1 3.5-.4 1.1 3.4 3 1.9-1.4 3.3 1.4 3.3-3 1.9-1.1 3.4-3.5-.4L12 22.5 9.1 20.4l-3.5.4-1.1-3.4-3-1.9L2.9 12 1.5 8.7l3-1.9 1.1-3.4 3.5.4z"/></svg>Certified Nexthink Associate</button>
         </div>
@@ -654,15 +655,17 @@ footer{background:var(--bg-alt);border-top:1px solid var(--line-soft);padding:cl
 </main>
 
 <dialog id="cert-dialog" class="cert-dialog">
-  <button type="button" class="cert-dialog-close" id="cert-dialog-close" aria-label="Cerrar">&times;</button>
-  <img id="cert-dialog-img" class="cert-dialog-img" alt="">
-  <iframe id="cert-dialog-frame" class="cert-dialog-frame" title="" hidden></iframe>
-  <div class="cert-dialog-foot">
-    <p id="cert-dialog-name" class="cert-dialog-name"></p>
-    <a id="cert-dialog-download" class="btn ghost cert-dialog-dl" download>
-      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
-      <span data-es="Descargar" data-en="Download">Descargar</span>
-    </a>
+  <div class="cert-dialog-inner">
+    <button type="button" class="cert-dialog-close" id="cert-dialog-close" aria-label="Cerrar">&times;</button>
+    <img id="cert-dialog-img" class="cert-dialog-img" alt="">
+    <iframe id="cert-dialog-frame" class="cert-dialog-frame" title="" hidden></iframe>
+    <div class="cert-dialog-foot">
+      <p id="cert-dialog-name" class="cert-dialog-name"></p>
+      <a id="cert-dialog-download" class="btn ghost cert-dialog-dl" download>
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
+        <span data-es="Descargar" data-en="Download">Descargar</span>
+      </a>
+    </div>
   </div>
 </dialog>
 
@@ -763,6 +766,8 @@ footer{background:var(--bg-alt);border-top:1px solid var(--line-soft);padding:cl
       var file = btn.getAttribute('data-file');
       var name = btn.getAttribute('data-name');
       var isPdf = /\.pdf$/i.test(file);
+      var scrollX = window.scrollX, scrollY = window.scrollY;
+      function keepScroll(){ window.scrollTo(scrollX, scrollY); }
       function apply(){
         if (isPdf){
           certFrame.src = file;
@@ -781,6 +786,7 @@ footer{background:var(--bg-alt);border-top:1px solid var(--line-soft);padding:cl
         certDownload.href = file;
         certDownload.setAttribute('download', name.toLowerCase().replace(/[^a-z0-9]+/g,'-'));
         certDialog.showModal();
+        keepScroll();
       }
       if (!reduceMotion && document.startViewTransition){
         activeCertBtn = btn;
@@ -790,7 +796,7 @@ footer{background:var(--bg-alt);border-top:1px solid var(--line-soft);padding:cl
           btn.style.viewTransitionName = '';
           certDialog.style.viewTransitionName = 'cert-preview';
         });
-        t.finished.finally(function(){ certDialog.style.viewTransitionName = ''; });
+        t.finished.finally(keepScroll);
       } else {
         apply();
       }
